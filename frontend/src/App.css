@@ -1,0 +1,163 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #F5F0E8;
+  --accent: #C17A4A;
+  --text: #2C1810;
+  --sub: #E8DDD0;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Nunito', sans-serif;
+  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  gap: 2px;
+}
+
+.left {
+  width: 40%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  border-right: 2px solid var(--sub);
+}
+
+.right {
+  width: 60%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .left {
+    width: 100%;
+    border-right: none;
+    border-bottom: 2px solid var(--sub);
+  }
+
+  .right {
+    width: 100%;
+  }
+}
+
+.inputImageFile {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid var(--text);
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputImageFile:hover {
+  background-color: var(--sub);
+}
+
+.detect {
+  background-color: #D4956A;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.detect:hover {
+  background-color: var(--accent);
+}
+
+.sliderWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sliderWrapper input {
+  flex: 1;
+}
+
+.card {
+  background-color: var(--sub);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.left img {
+  max-width: 100%;
+  max-height: calc(100vh - 300px);
+  object-fit: contain;
+}
+
+.cropImage {
+  max-width: 100%;
+  max-height: 30vh;
+  object-fit: contain;
+}
+
+.resultImage {
+  max-width: 100%;
+  max-height: 50vh;
+  object-fit: contain;
+}
+
+.choiceButton {
+  border: 1.5px solid var(--text);
+  background: transparent;
+  color: var(--text);
+  border-radius: 20px;
+  padding: 8px 20px;
+  font-size: 13px;
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+}
+
+.choiceButton:hover {
+  border: 1.5px solid transparent;
+  background: var(--accent);
+  color: white;
+}
+
+.resultCard {
+  border-radius: var(--border-radius-md);
+  padding: 1rem 1.5rem;
+  color: white;
+  font-size: 1.2rem;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.correct {
+  background-color: #C17A4A;
+}
+
+.incorrect {
+  background-color: #7A9EC1;
+}

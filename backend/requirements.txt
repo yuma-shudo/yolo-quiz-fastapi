@@ -1,0 +1,9 @@
+FastAPI
+uvicorn
+pillow
+pillow-heif
+python-multipart
+psycopg2-binary
+sqlalchemy
+ultralytics
+python-dotenv

@@ -1,0 +1,97 @@
+.archivePanel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 13vw;
+  height: 100vh;
+  background-color: var(--bg);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .archivePanel {
+    width: 85vw;
+  }
+}
+
+.archivePanel.open {
+  transform: translateX(0);
+	border-left: 2px solid #333;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.tab {
+  position: absolute;
+  left: -40px;
+  top: 20px;
+  background-color: var(--bg);
+  border-top: 2px solid #333;
+  border-left: 2px solid #333;
+  border-bottom: 2px solid #333;
+  border-right: none;
+  border-radius: 8px 0 0 8px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.imageGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-y: auto;
+  padding: 1rem;
+	overflow-y: auto;
+  height: calc(100vh - 60px);
+}
+
+.imageGrid > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.imageGrid img {
+  width: 100%;
+  max-width: 200px;
+  height: 200px;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 8px;
+  min-height: 36px;
+}
+
+.deleteButton {
+  background: #E25555;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.importButton {
+  background: #5A9E7A;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
