@@ -2,6 +2,7 @@ import './App.css'
 import { useState, useRef } from 'react'
 import { Camera, CheckCircle, XCircle } from 'lucide-react'
 import ArchivePanel from './ArchivePanel'
+const API_BASE = import.meta.env.VITE_API_BASE_URL
 
 export default function App() {
   const [image, setImage] = useState(null)          // アップロードした画像
@@ -20,7 +21,7 @@ export default function App() {
     if (!imageUrl) {
       const saveFormData = new FormData()
       saveFormData.append("file", image)
-      fetch("http://localhost:8000/images", {
+      fetch(`${API_BASE}/images`, {
         method: "POST",
         body: saveFormData
       })
@@ -34,7 +35,7 @@ export default function App() {
     const formData = new FormData()
     formData.append("file", fileToSend)
     formData.append("confidence", confidence)
-    const response = await fetch("http://localhost:8000/detect", {
+    const response = await fetch(`${API_BASE}/detect`, {
       method: "POST",
       body: formData
     })

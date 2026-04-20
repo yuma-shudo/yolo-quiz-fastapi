@@ -2,6 +2,8 @@ import './ArchivePanel.css'
 import { useState } from 'react'
 import { Trash2, ArrowUpFromLine, ChevronRight, ChevronLeft } from 'lucide-react'
 
+const API_BASE = import.meta.env.VITE_API_BASE_URL
+
 export default function ArchivePanel({ setImage, setImageUrl, setQuizData }) {
 	const [selectedImage, setSelectedImage] = useState(null)
 	const [isOpen, setIsOpen] = useState(false)
@@ -9,7 +11,7 @@ export default function ArchivePanel({ setImage, setImageUrl, setQuizData }) {
 	const [isLoading, setIsLoading] = useState(false)
 	const getImage = async () => { 
 		setIsLoading(true)
-		const response = await fetch("http://localhost:8000/images", {
+		const response = await fetch(`${API_BASE}/images`, {
 			method: "GET",
 		})
 		const data = await response.json()
@@ -24,10 +26,10 @@ export default function ArchivePanel({ setImage, setImageUrl, setQuizData }) {
 	}
 	const handleDelete = async (id) => { 
 		setIsLoading(true)
-		const delete_image = await fetch(`http://localhost:8000/images/${id}`, {
+		const delete_image = await fetch(`${API_BASE}/images/${id}`, {
 		method: "DELETE",
 		})
-		const response = await fetch("http://localhost:8000/images", {
+		const response = await fetch(`${API_BASE}/images`, {
 		method: "GET",
 		})
 		const data = await response.json()
@@ -36,7 +38,7 @@ export default function ArchivePanel({ setImage, setImageUrl, setQuizData }) {
 	}
 	const handleImport = () => {
 		setQuizData(null)
-		setImageUrl(`http://localhost:8000/images/${selectedImage.id}/file`)
+		setImageUrl(`${API_BASE}/images/${selectedImage.id}/file`)
 		setIsOpen(!isOpen)
 	}
 	
@@ -54,7 +56,7 @@ export default function ArchivePanel({ setImage, setImageUrl, setQuizData }) {
 							? <p>プレイした画像を読み込み中です...</p>
 							: allImages.map((image) => (
 								<div key={image.id}>
-									<img onClick={() => setSelectedImage(image)} src={`http://localhost:8000/images/${image.id}/file`} />
+									<img onClick={() => setSelectedImage(image)} src={`${API_BASE}/images/${image.id}/file`} />
 									{selectedImage?.id === image.id && 
 										<div className="actionButtons">
 											<button className="deleteButton" onClick={() => handleDelete(image.id)}><Trash2 /></button>
